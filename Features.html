@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Features | Pulse Gym Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary: #ff3e3e;
+            --bg-dark: #0a0a0a;
+            --bg-card: #161616;
+            --text-light: #ffffff;
+            --text-gray: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            color: black;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Refined Nav Bar */
+        /* Optimized Centered Nav Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8%;
+            height: 70px;
+            background: rgba(10, 10, 10, 0.98);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #222;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            /* Takes up 1/3 of the space on the left */
+        }
+
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            margin: 0 auto;
+            /* Keeps the list centered */
+            flex: 1;
+            /* Takes up the middle 1/3 */
+            justify-content: center;
+        }
+
+        .nav-links li {
+            margin: 0 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light) !important;
+            /* Forces color to white */
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        /* Container for the right-side button */
+        .nav-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex: 1;
+            /* Takes up 1/3 of the space on the right to balance the logo */
+        }
+
+        .btn-demo {
+            background: var(--primary);
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        /* Fix: Remove the 'color: black' from the universal selector (*) in your code 
+   to ensure nav links stay white/light */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Fix for the Header spacing */
+        header {
+            padding-top: 120px;
+            /* Increased top padding so content doesn't hide behind nav */
+            padding-bottom: 40px;
+            text-align: center;
+            background: linear-gradient(to bottom, #111, var(--bg-dark));
+        }
+
+        .back-home {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--text-gray);
+            font-size: 1.2rem;
+        }
+
+        /* Feature Sections */
+        .feature-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .feature-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .feature-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .feature-item:nth-child(even) .feature-text {
+            direction: ltr;
+        }
+
+        .feature-icon-box {
+            background: var(--bg-card);
+            height: 350px;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #222;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-icon-box i {
+            font-size: 8rem;
+            color: var(--primary);
+            filter: drop-shadow(0 0 15px rgba(255, 62, 62, 0.3));
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .feature-text p {
+            color: var(--text-gray);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li i {
+            color: var(--primary);
+            margin-right: 15px;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 60px 8%;
+            background: #050505;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            /* Stacks logo above text */
+            align-items: center;
+            /* Ensures both elements are centered */
+            gap: 20px;
+            /* Adds space between logo and text */
+        }
+
+        .footer-logo {
+            height: 80px;
+            /* Adjust size as needed */
+            width: auto;
+            display: block;
+            margin-bottom: 10px;
+            /* Extra spacing control */
+        }
+
+        footer p {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+
+        @media (max-width: 768px) {
+            .feature-item {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+
+            .feature-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="./photos/Pulse.png" alt="Pulse Logo" class="nav-logo">
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="./Features.html">Features</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="./index.html">Contact</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <a href="#" class="btn-demo">Get Started</a>
+                <div class="menu-toggle" style="margin-left: 20px; color: white;">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </nav>
+        <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <h1>Pulse Features</h1>
+        <p class="subtitle">Deep dive into the tools powering your fitness empire.</p>
+    </header>
+
+    <div class="feature-container">
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Member Management</h2>
+                <p>Take control of your community with our robust CRM. Pulse handles everything from initial lead
+                    capture to lifetime loyalty tracking.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Digital membership contracts & waivers</li>
+                    <li><i class="fas fa-check"></i> Automated renewal reminders</li>
+                    <li><i class="fas fa-check"></i> Family & Group plan linking</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-users"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Biometric Attendance</h2>
+                <p>Eliminate buddy-punching and forgotten key fobs. Our hardware-agnostic software integrates with top
+                    biometric scanners.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Fingerprint & Face-ID integration</li>
+                    <li><i class="fas fa-check"></i> Instant check-in logs</li>
+                    <li><i class="fas fa-check"></i> Tailored access control for VIP zones</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-fingerprint"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Scheduling & Classes</h2>
+                <p>Dynamic calendars that allow trainers and members to sync effortlessly. Prevent overbooking and
+                    manage waitlists automatically.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Drag-and-drop class builder</li>
+                    <li><i class="fas fa-check"></i> Member app booking & cancellations</li>
+                    <li><i class="fas fa-check"></i> Recurring personal training slots</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-calendar-alt"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Payment & Billing</h2>
+                <p>Turn your gym into a hands-free revenue machine. We support multiple payment gateways and automated
+                    subscription billing.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Automated PCI-compliant billing</li>
+                    <li><i class="fas fa-check"></i> Integrated POS for supplement sales</li>
+                    <li><i class="fas fa-check"></i> Revenue forecasting reports</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-credit-card"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Trainer & Staff Management</h2>
+                <p>Empower your team. Track commissions, manage shift rotas, and monitor trainer-to-client success
+                    rates.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Payroll automation for commissions</li>
+                    <li><i class="fas fa-check"></i> Internal staff communication portal</li>
+                    <li><i class="fas fa-check"></i> Performance KPI tracking</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-user-tie"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>AI Workout & Diet Plans</h2>
+                <p>Bring the future to your members. Pulse AI generates hyper-personalized plans based on goals,
+                    metabolism, and progress.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Machine learning calorie targets</li>
+                    <li><i class="fas fa-check"></i> Adaptive exercise suggestions</li>
+                    <li><i class="fas fa-check"></i> Macro-nutrient tracking via app</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-robot"></i></div>
+        </section>
+
+        <section class="feature-item">
+            <div class="feature-text">
+                <h2>Progress Tracking</h2>
+                <p>Visual results keep members motivated. Track everything from body fat percentage to personal bests in
+                    the squat rack.</p>
+                <ul class="feature-list">
+                    <li><i class="fas fa-check"></i> Interactive weight loss charts</li>
+                    <li><i class="fas fa-check"></i> Photo-based transformation logs</li>
+                    <li><i class="fas fa-check"></i> Benchmark PR leaderboards</li>
+                </ul>
+            </div>
+            <div class="feature-icon-box"><i class="fas fa-running"></i></div>
+        </section>
+
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <img src="./photos/Pulse.png" alt="Pulse Logo" class="footer-logo">
+            <p>&copy; 2026 Pulse Gym Management Software. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
